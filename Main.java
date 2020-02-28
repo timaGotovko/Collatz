@@ -1,23 +1,30 @@
 import java.util.Scanner;
 
 public class Main {
-    public static int Collatz(int newNumber){
-        while(newNumber != 1) {
+    public static void Collatz(int newNumber){
+        if(newNumber==1) System.out.println(1);
+        else {
             if (newNumber % 2 == 0) {
                 System.out.println(newNumber);
-                return Collatz(newNumber / 2);
-            } else{
+                Collatz(newNumber / 2);
+            } else {
                 System.out.println(newNumber);
-                return Collatz(newNumber * 3 + 1);
+                Collatz(newNumber * 3 + 1);
             }
         }
-        return 1;
     }
 
     public static void main (String args[]){
-        Scanner in = new Scanner(System.in);
-        int newNumber = in.nextInt();
-        System.out.println(newNumber);
-        Collatz(newNumber);
+        int newNumber =0;
+        while (newNumber<1) {
+            System.out.println("Enter a positive number");
+            Scanner in = new Scanner(System.in);
+            newNumber = in.nextInt();
+            if (newNumber > 1) {
+                Collatz(newNumber);
+            } else {
+                System.out.println("Error please enter a positive number");
+            }
+        }
     }
 }
